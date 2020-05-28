@@ -9,10 +9,6 @@
           class="list-group"
         >
           <span v-html="componente"></span>
-          <!-- <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>-->
         </ul>
       </div>
       <br />
@@ -29,8 +25,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
 import HelloWorld from "@/components/HelloWorld.vue";
 import io from "socket.io-client";
 var socket = io.connect("http://localhost:3001/");
@@ -81,9 +75,6 @@ export default {
     
 
   },
-  updated() {
-    // whenever data changes and the component re-renders, this is called.
-  }
 };
 </script>
 <style scoped>

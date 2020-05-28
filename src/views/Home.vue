@@ -30,6 +30,7 @@
 
 <script>
 // @ is an alias to /src
+
 import HelloWorld from "@/components/HelloWorld.vue";
 let lista = document.getElementById("lista");
 
@@ -48,7 +49,6 @@ export default {
   methods: {
     putElement() {
       if (this.texto) {
-        console.log("holis");
         if (this.clase % 2) {
           this.componentes.push(
             `<li class="bg-primary text-light list-group-item clase${this.clase}">${this.texto}</li>`
@@ -64,16 +64,6 @@ export default {
         
       }
     },
-    scrollToEnd() {
-      console.log("Hola perro");
-
-      // scroll to the start of the last message
-      const el = this.$el.getElementsByClassName('scroll-to-me')[0];
-
-      if (el) {
-        el.scrollIntoView();
-      }
-    }
   },
   updated() {
     // whenever data changes and the component re-renders, this is called.

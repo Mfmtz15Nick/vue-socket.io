@@ -5,39 +5,39 @@
         <table id="matrix">
           <tr>
             <td>
-              <button id="b1">
+              <button @click="putTexto(1)" id="b1">
                 <span>{{matriz.boton1}} </span>
               </button>
             </td>
             <td>
-              <button id="b2">{{matriz.boton2}}</button>
+              <button @click="putTexto(2)" id="b2">{{matriz.boton2}}</button>
             </td>
             <td>
-              <button id="b3">{{matriz.boton3}}</button>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <button id="b4">{{matriz.boton4}}</button>
-            </td>
-            <td>
-              <button id="b5">{{matriz.boton5}}</button>
-            </td>
-            <td>
-              <button id="b6">{{matriz.boton6}}</button>
+              <button @click="putTexto(3)" id="b3">{{matriz.boton3}}</button>
             </td>
           </tr>
 
           <tr>
             <td>
-              <button id="b7">{{matriz.boton7}}</button>
+              <button @click="putTexto(4)" id="b4">{{matriz.boton4}}</button>
             </td>
             <td>
-              <button id="b8">{{matriz.boton8}}</button>
+              <button @click="putTexto(5)" id="b5">{{matriz.boton5}}</button>
             </td>
             <td>
-              <button id="b9">{{matriz.boton9}}</button>
+              <button @click="putTexto(6)" id="b6">{{matriz.boton6}}</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <button @click="putTexto(7)" id="b7">{{matriz.boton7}}</button>
+            </td>
+            <td>
+              <button @click="putTexto(8)" id="b8">{{matriz.boton8}}</button>
+            </td>
+            <td>
+              <button @click="putTexto(9)" id="b9">{{matriz.boton9}}</button>
             </td>
           </tr>
         </table>
@@ -45,9 +45,8 @@
       <br />
       <br />
       <div>
-        <input placeholder="Numero de boton" autofocus  v-model="texto" class="form-control" />
-        <br />
-        <input placeholder="Texto" autofocus v-on:keyup.13="putElement" v-model="letras" class="form-control" />
+
+        <input placeholder="Texto" v-on:keyup.13="putElement" v-model="letras" class="form-control" />
         <br />
 
         <button
@@ -92,6 +91,9 @@ export default {
         this.matriz[boton] = this.letras;
         this.texto = ''
         this.letras = ''
+    },
+    putTexto(numero){
+      this.texto = numero
     }
   }
 };
@@ -122,30 +124,5 @@ td {
   font-family: helvetica;
   font-weight: bold;
 }
-/* 
-#b1,
-#b3 {
-  background-color: rgba(255, 153, 51, 0.5);
-}
 
-#b1:hover,
-#b3:hover {
-  background-color: rgb(255, 153, 51);
-}
-
-#b2 {
-  background-color: rgba(15, 138, 15, 0.5);
-}
-
-#b2:hover {
-  background-color: rgb(15, 138, 15);
-}
-
-#b4 {
-  background-color: rgba(189, 15, 15, 0.6);
-}
-
-#b4:hover {
-  background-color: rgb(189, 15, 15);
-} */
 </style>

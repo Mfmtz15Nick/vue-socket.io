@@ -27,7 +27,7 @@
 <script>
 import HelloWorld from "@/components/HelloWorld.vue";
 import io from "socket.io-client";
-var socket = io.connect("http://localhost:3001/");
+var socket = io.connect("https://kango.ngrok.io/");
 
 let lista = document.getElementById("lista");
 

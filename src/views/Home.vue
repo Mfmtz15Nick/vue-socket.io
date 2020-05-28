@@ -17,10 +17,10 @@
       </div>
       <br />
       <div>
-        <input autofocus v-on:keyup.13="putElement" v-model="texto" class="form-control" />
+        <input autofocus v-on:keyup.13="sendEmit" v-model="texto" class="form-control" />
         <br />
         <button
-          @click="putElement"
+          @click="sendEmit"
           class="btn text-light btn-block bg-success font-weight-bold"
         >Send</button>
       </div>
@@ -32,6 +32,9 @@
 // @ is an alias to /src
 
 import HelloWorld from "@/components/HelloWorld.vue";
+import io from "socket.io-client";
+var socket = io.connect("http://localhost:3001/");
+
 let lista = document.getElementById("lista");
 
 export default {
@@ -43,31 +46,43 @@ export default {
     return {
       componentes: [],
       clase: 1,
-      texto: ''
+      texto: ""
     };
   },
   methods: {
+    sendEmit(){
+      socket.emit("hello", this.texto);
+
+    },
     putElement() {
       if (this.texto) {
         if (this.clase % 2) {
           this.componentes.push(
             `<li class="bg-primary text-light list-group-item clase${this.clase}">${this.texto}</li>`
           );
-          
-        }else{
-                this.componentes.push(
+        } else {
+          this.componentes.push(
             `<li class="bg-success text-light list-group-item clase${this.clase}">${this.texto}</li>`
           );
         }
-      this.clase++
-      this.texto = ''
-        
+        this.clase++;
+        this.texto = "";
       }
     },
+    conectarse(){
+        socket.on("hello", message => {
+          this.texto = message
+          this.putElement()
+    })
+    }
+  },
+  mounted() {
+    this.conectarse()
+    
+
   },
   updated() {
     // whenever data changes and the component re-renders, this is called.
-    this.$nextTick(() => this.scrollToEnd());
   }
 };
 </script>
